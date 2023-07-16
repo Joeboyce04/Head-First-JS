@@ -1,0 +1,46 @@
+body {
+  background-color: black;
+}
+
+div#board {
+  position: relative;
+  width: 1024px; /* keeps game board in middle of screen */
+  height: 863px;
+  margin: auto;
+  background: url("board.jpg") no-repeat; /* image as page background*/
+}
+div#messageArea {
+  position: absolute; /* top left of board*/
+  top: 0px;
+  left: 0px; /*0px from top and left meaning will be top left */
+  color: rgb(83, 175, 19);
+}
+
+.hit {
+  background: url("ship.png") no-repeat center center; /* if an elemnt is in the hit class it gets the ship image, im the element is in the miss class it gets the miss image in background*/
+}
+.miss {
+  background: url("miss.png") no-repeat center center;
+}
+table {
+  position: absolute;
+  left: 173px;
+  top: 98px; /* so it aligns with the grin in background image */
+  border-spacing: 0px;
+}
+td {
+  width: 94px;
+  height: 94px; /* so cells of table match up with grid */
+}
+form {
+  position: absolute;
+  bottom: 0px; /* green colour to macth background and placing form at bottom right of board*/
+  right: 0px;
+  padding: 15px;
+  background-color: rgb(83, 175, 19);
+}
+form input {
+  background-color: rgb(152, 207, 113);
+  border-color: rgb(83, 175, 19); /* styling input elements */
+  font-size: 1em;
+}
