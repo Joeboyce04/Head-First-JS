@@ -209,8 +209,6 @@ function handleKeyPress(e) {
 
 // init - called when the page has completed loading
 
-window.onload = init; //want the browser to run "init" when the page is fully loaded
-
 function init() {
   var fireButton = document.getElementById("fireButton"); //handles onclick Fire! button          // first we get a reference to the fire button using the buttons id
   fireButton.onclick = handleFireButton; //then we can add a click handler function named HandleFireButton to the button
