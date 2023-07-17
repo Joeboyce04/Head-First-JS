@@ -144,6 +144,7 @@ var controller = {
       this.guesses++; //as long as null isn't returned we know we've got a valid location object
       var hit = model.fire(location); //if the guess was hit and the number of ships are sunk is equal to the number of ships in the game then show message that all ships are sunk
       if (hit && model.shipsSunk === model.numShips) {
+        //&& is and if all is true otherwise false
         //if the player entered a valid guess we increase the number of guesses by one
         //determiens if all ships are sunl                                                      //we pass the row and column in the form of a string to the models fire method. Remember, the fire method returns true if a ship is hit
         view.displayMessage(
@@ -167,6 +168,7 @@ function parseGuess(guess) {
     var column = guess.charAt(1); //second cHARACHTER                                //indexOF we get back a number between zero and six that corresponds to the letter
     //added code to grab the second character in the string which represents the column
     if (isNaN(row) || isNaN(column)) {
+      //boolean || is true if one is true
       //and were checking to see if either of the row or colum is not a number using the isNaN function
       alert("Oops, that isn't on the board.");
     } else if (
@@ -189,7 +191,7 @@ function parseGuess(guess) {
 function handleFireButton() {
   //this function will be called whenever fire button is pressed
   var guessInput = document.getElementById("guessInput"); // grabs user guess from form input, upon button click                   //first we get a refernce to the input from element using the input elements id "guess input"
-  var guess = guessInput.value; //then we get the guess from the input element, the guess is stored in the value property of the input element
+  var guess = guessInput.value.toUpperCase(); //UPPERCASE TOOK ME HOURS TO REALISE //then we get the guess from the input element, the guess is stored in the value property of the input element
   //were passing the players guess to the controller.
   controller.processGuess(guess);
   //resets the form input element to be the empty string. That way you don't have to explicity select the text and delete it before entering the next guess which would be annoying
@@ -200,7 +202,9 @@ function handleKeyPress(e) {
   //called whenever a key is press in the form input
   // event handler called whenever key is pressed in HTML input field               //the browser passes an vent object to the handler. This object has info about which key was pressed
   var fireButton = document.getElementById("fireButton");
-  //if you press the RETURN key the events keyCode property will be set to 13, of thats the case then we want to cause the frie button to act like it was clicked we can do that by calling the firebutton click method tricking it into thinking it was clicked
+
+  // so we use window.event instead.
+  e = e || window.event; //for cross browser compatibility                                    //if you press the RETURN key the events keyCode property will be set to 13, of thats the case then we want to cause the frie button to act like it was clicked we can do that by calling the firebutton click method tricking it into thinking it was clicked
   if (e.keyCode === 13) {
     fireButton.click();
     return false; //returns false so the form dosent do anything else
@@ -208,6 +212,7 @@ function handleKeyPress(e) {
 }
 
 // init - called when the page has completed loading
+window.onload = init;
 
 function init() {
   var fireButton = document.getElementById("fireButton"); //handles onclick Fire! button          // first we get a reference to the fire button using the buttons id
